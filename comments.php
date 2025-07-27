@@ -1,4 +1,4 @@
-<div class="padding" id="comments">
+<div class="padding blur" id="comments">
 <?php $this->comments()->to($comments); ?>
 <!--评论输入框-->
 <?php if($this->allow('comment')): ?>
@@ -51,6 +51,8 @@
     </div>
     </form>
 </div>
+<?php else:?>
+<div class="load">—&nbsp;END&nbsp;—</div>
 <?php endif; ?>
 <!--评论列表开始-->
 <?php if ($comments->have()): ?>
@@ -109,13 +111,15 @@ function threadedComments($comments, $options) {$commentLevelClass = $comments->
 <?php } ?>
 <?php $comments->listComments(); ?>
 <?php $comments->pageNav('', ''); ?>
-        
+<!-- 加载更多按钮，仅PC端显示，移动端隐藏 -->
+<div class="load" id="load-more-comments">加载更多评论</div>
+
+<!-- 原有加载提示 -->
 <div id="loading-spinner" style="display: none;">
     <div class="spinner"></div><span>加载中...</span>
 </div>
-<div class="end" id="no-more" style="display: none;">END</div>
-<?php else:?>
-<div class="end" id="no-more" style="display: none;">END</div>
+<div class="load" id="no-more" style="display: none;">—&nbsp;已加载全部评论&nbsp;—</div>
+
 <?php endif; ?>
     
 <!--评论列表end-->
