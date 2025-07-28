@@ -1909,6 +1909,30 @@ textarea {
 pre {
     overflow-x: auto;
     margin-bottom: 30px;
+    position: relative;
+}
+
+.code-copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+pre:hover .code-copy-btn {
+    opacity: 1;
+}
+
+.code-copy-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
 
 pre code{

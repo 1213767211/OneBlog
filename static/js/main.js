@@ -762,3 +762,60 @@ function showConsoleInfo() {
 }
 // 调用函数
 showConsoleInfo();
+
+/**代码块一键复制按钮**/
+document.addEventListener('DOMContentLoaded', function() {
+    // 查找所有代码块
+    const codeBlocks = document.querySelectorAll('pre code');
+    
+    codeBlocks.forEach(function(codeBlock) {
+        // 创建复制按钮
+        const copyButton = document.createElement('button');
+        copyButton.className = 'code-copy-btn';
+        copyButton.textContent = '复制';
+        
+        // 将按钮添加到代码块的父元素（pre标签）中
+        const preElement = codeBlock.parentNode;
+        preElement.style.position = 'relative';
+        preElement.appendChild(copyButton);
+        
+        // 点击复制按钮的事件
+        copyButton.addEventListener('click', function() {
+            // 移除过滤器，确保能够复制全部代码
+            codeBlock.style.filter = 'none';
+            
+            // 创建一个临时textarea来复制代码
+            const textarea = document.createElement('textarea');
+            textarea.value = codeBlock.textContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                // 执行复制命令
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    // 显示复制成功提示
+                    copyButton.textContent = '已复制';
+                    copyButton.style.backgroundColor = 'rgba(40, 167, 69, 0.7)';
+                    
+                    // 2秒后恢复按钮状态
+                    setTimeout(function() {
+                        copyButton.textContent = '复制';
+                        copyButton.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                    }, 2000);
+                } else {
+                    copyButton.textContent = '复制失败';
+                }
+            } catch (err) {
+                console.error('复制失败:', err);
+                copyButton.textContent = '复制失败';
+            }
+            
+            // 清理临时元素
+            document.body.removeChild(textarea);
+        });
+        
+        // 取消代码块的模糊效果，让用户直接看到代码
+        codeBlock.style.filter = 'none';
+    });
+});
