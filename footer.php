@@ -3,6 +3,7 @@
         <?php if ($menu = CustomMenu()): ?>
         <?php echo $menu['noIcon']; ?>
         <?php endif; ?>
+        <a href="/archives">归档</a>
     </div>
     <div class="copyright">
         Copyright&copy;<?php if (!empty($this->options->Webtime)): echo $this->options->Webtime().'-'; ?><?php endif; ?><?php echo date('Y'); ?>&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;Load：<?php echo timer_stop();?><br>
@@ -40,8 +41,8 @@
 <script src="<?php $this->options->themeUrl('/static/sdk/jquery.min.js'); ?>"></script><!--基础依赖放在最前面-->
 <script src="<?php $this->options->themeUrl('/static/sdk/fancybox3/jquery.fancybox.min.js'); ?>"></script><!--图片灯箱效果-->
 <script src="<?php $this->options->themeUrl('/static/sdk/layer/layer.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('/static/sdk/swiper/swiper-bundle.min.js'); ?>"></script>
 <?php if ($this->is('index')):?>
+<script src="<?php $this->options->themeUrl('/static/sdk/swiper/swiper-bundle.min.js'); ?>"></script>
 <script>
 var bannerSwitch = '<?= $this->options->switch === 'on' ? 'on' : 'off' ?>';
 </script>
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <?php endif;?>
 
-<script src="<?php $this->options->themeUrl('/static/js/main.js?v=3.6.1'); ?>"></script><!--主题js-->
+<script src="<?php $this->options->themeUrl('/static/js/main.js?v=3.6.2'); ?>"></script><!--主题js-->
 
 <!-- 版权信息 -->
 <div id="copyright-info" style="display: none;">
@@ -93,29 +94,6 @@ $(document).on('click', '#qq', function() {layer.msg('<?php $this->options->QQ()
 $(document).on('click', '#wxmp', function() {layer.open({type: 1,title: false,closeBtn: 0,shadeClose: true,skin: 'layui-layer-nobg',area: ['auto'], content: '<img id= "mywxmp" style="width:20rem;height:20rem;display:block;" src="<?php $this->options->Weixin();?>">'});});
 $(document).on('click', '#tomail', function() {layer.msg('联系邮箱：<?php $this->options->Email();?>',{time:4000});});    	
 </script>
-
-
-<script>
-var $NZMenuData = <?php echo json_encode(getNZMenuData()); ?>;
-$(function () {var newItems = [];
-// 动态生成菜单项
-for (var i = 0; i < $NZMenuData.length; i++) {var item = $NZMenuData[i];newItems.push({name: item.name,event: (function(item) {return function(){window.location.href = item.url;};})(item),icon: item.icon});}
-// 只在PC端添加搜索按钮
-    if (window.innerWidth >= 768) {
-        newItems.push(
-            {name: "搜索",event: function() {
-                openSearch(); // 自动聚焦输入框
-                    setTimeout(() => {
-                        $('.search-layer .input').focus();
-                    }, 350);
-                },icon: "iconfont icon-search"
-            }
-        );
-    }
-
-$("html").NZ_Menu({items: newItems});});
-</script>
-
 <!--自定义JS代码-->
 <?php if (!empty($this->options->JS)): ?>
 <?php $this->options->JS();?>

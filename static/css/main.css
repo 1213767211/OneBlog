@@ -310,6 +310,74 @@ td,th {
     background-repeat: no-repeat;
 }
 
+/**菜单容器**/
+/**动画效果自定义**/
+@keyframes fadeInLeftShort {
+    from {
+        opacity: 0;
+        transform: translate3d(-20px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.animated.fadeInLeftShort {
+    animation-name: fadeInLeftShort;
+}
+
+.menu {
+    display: none;
+    transform: translateZ(0);
+}
+
+/**电脑端菜单原生效果**/
+@media (min-width: 768px) {
+    .menu{
+        flex-direction: column;
+        padding: 10px 0 10px 0;
+        margin: 0;
+        border-radius: 2px;
+        z-index: 1;
+        background: var(--white);
+        list-style: none;
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-sizing: initial;
+    }
+    
+    .menu.active {
+        display: flex;
+        position: absolute;
+    }
+    
+    .menu.active li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 360px;
+        padding: 12px 35px 12px 20px;
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 14px;
+        transition: all .2s .15s;
+        user-select: none;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .menu.active li:hover {
+        background-color: var(--bg-input);
+    }
+    
+    .menu.active li i{
+        margin: 0 5px;
+    }
+    
+}
+
+
 /**禁止滚动**/
 .noscroll {
     overflow: hidden !important;
@@ -1042,12 +1110,13 @@ a.post {
 
 
 /**无封面图的文章详情页**/
+/**面包屑**/
+.breadcrumb,.breadcrumb li {
+    display: inline;
+}
+
 .breadcrumb {
     color: var(--grey);
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -1882,7 +1951,7 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
     background-color: var(--line);
     -webkit-transition: .5s ease-in-out opacity;
     transition: .5s ease-in-out opacity;
-    filter: blur(35px);
+    filter: blur(20px);
     -webkit-mask: radial-gradient(circle at center, var(--white) 100%, transparent 100%);
     mask: radial-gradient(circle at center, var(--white) 100%, transparent 100%);
 }

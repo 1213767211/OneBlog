@@ -31,10 +31,10 @@ $this->widget('Album_Widget_Photo@photoList', 'page=' . $currentPage)->to($photo
     <div class="page-title animated fadeIn pc">
         <h1><?php $this->title(); ?></h1>   
     </div>
-    <div class="photo-contain animated fadeIn">
+    <div class="photo-contain blur animated fadeIn">
         <?php if (array_key_exists('Album', Typecho_Plugin::export()['activated'])):?>
         <!--相册-->
-        <div class="photos blur" id="photos">
+        <div class="photos" id="photos">
             <?php for ($photos->rewind(); $photos->valid(); $photos->next()): ?>
             <div class="photo image-shadow">
                 <a href="<?= $photos->rawUrl ?>" data-fancybox="gallery" 
@@ -45,7 +45,7 @@ $this->widget('Album_Widget_Photo@photoList', 'page=' . $currentPage)->to($photo
             <?php endfor; ?>
         </div>
         <!-- 点击无限加载 -->
-        <div class="load blur" id="loadmore">
+        <div class="load" id="loadmore">
             <?php if ($photos->haveNextPage()): ?>
                 <a href="?ajax=1&page=<?php echo $currentPage + 1; ?>" class="next">点击查看更多</a>
             <?php else: ?>

@@ -39,26 +39,52 @@ const _0x46c2=['SVFjcUk=','T25lQmxvZw==','aHR0cHM6Ly9vbmVibG9nLm5ldC9vbmVibG9n',
 })(); 
 
 
-/*自定义鼠标右键*/
-(function(a){a.fn.NZ_Menu=function(e){var c={items:[],fatype:"fas",bgcolor:"#fff",showbefore:null,showafter:null,closed:null};var b=a.extend({},c,e);if(b.items.length===0){alert("请先设置菜单项！");return false}a(this).contextmenu(function(h){var f=a(this);if(f.data("nzmenuid")===null||typeof f.data("nzmenuid")==="undefined"){f.data("nzmenuid",d())}a(".NZ-Menu").each(function(){if(a(this).data("nzmenuid")===f.data("nzmenuid")){a(this).off("animationend webkitAnimationEnd").addClass("NZ-Menu-hidemenu").on("animationend webkitAnimationEnd",function(){a(this).remove()})}});if(typeof b.showbefore==="function"){b.showbefore()}var g=a('<ul class="NZ-Menu"></ul>');var i=a('<li class="hoverlayer"></li>');g.append(i).mouseleave(function(){i.css({opacity:0})}).data("nzmenuid",f.data("nzmenuid"));var j=false;a.each(b.items,function(m,o){var n=a('<li class="NZ-Menu-motion NZ-Menu-showitem">'+o.name+"</li>");if(typeof o.attrlist!=="undefined"&&o.attrlist!==null&&o.attrlist.length>0){for(var k=0;k<o.attrlist.length;k++){n.attr(o.attrlist[k].name,o.attrlist[k].val)}}if(typeof o.classlist!=="undefined"&&o.classlist!==null&&o.classlist.length>0){for(var l=0;l<o.classlist.length;l++){n.addClass(o.classlist[l])}}if(typeof o.icon!=="undefined"&&o.icon!==null&&o.icon!==""){n.append('<i class="'+b.fatype+" "+o.icon+'"></i>');j=true}n.click(function(){o.event()}).mouseenter({e:i},function(p){p.data.e.css({opacity:1,top:a(this).position().top,height:a(this).outerHeight()})}).css({"animation-delay":(0.1*m)+"s"}).on("animationend webkitAnimationEnd",function(p){p.stopPropagation()});g.append(n)});if(j){g.find("li").addClass("item-icon")}a(document.body).append(g);g.css({left:h.pageX,top:h.pageY});g.addClass("NZ-Menu-motion NZ-Menu-showmenu").on("animationend webkitAnimationEnd",function(){if(typeof b.showafter==="function"){b.showafter()}a(this).removeClass("NZ-Menu-showmenu")});a(document).bind("mousedown.nzmenu",function(k){switch(k.which){case 1:a(".NZ-Menu").each(function(l){a(this).off("animationend webkitAnimationEnd").css({"animation-delay":(l*0.1+0.2)+"s"}).addClass("NZ-Menu-hidemenu").on("animationend webkitAnimationEnd",function(){if(typeof b.closed==="function"){b.closed()}a(this).remove()})});a(document).unbind("click.nzmenu");break;case 3:break;case 2:break;default:break}});return false});function d(){return"NZ-MENU-"+"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(f){var g=Math.random()*16|0,h=f=="x"?g:(g&3|8);return h.toString(16)})}}})(jQuery);
-var _0x25e0=['aW5uZXJIVE1M','PGRpdiBjbGFzcz0iY29weXJpZ2h0LWluZm8iPuW8gOa6kOS4jeaYk++8jOivt+WwiumHjeS9nOiAheeJiOadg++8jOS/neeVmeWfuuacrOeahOeJiOadg+S/oeaBr+OAgjwvZGl2Pg==','6K+35Yu/5Yig6Zmk5qC45b+D5Ye95pWw77yM5ZCm5YiZ5Lya5Ye6546w5Lil6YeN5byC5bi444CC'];var _0x55ab=function(_0x25e04d,_0x55ab5d){_0x25e04d=_0x25e04d-0x0;var _0x5643d4=_0x25e0[_0x25e04d];if(_0x55ab['ezHGGw']===undefined){(function(){var _0x4c3ee3;try{var _0x20fc93=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x4c3ee3=_0x20fc93();}catch(_0x6b3f6){_0x4c3ee3=window;}var _0x299759='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x4c3ee3['atob']||(_0x4c3ee3['atob']=function(_0x2fcadb){var _0x82db23=String(_0x2fcadb)['replace'](/=+$/,'');var _0x2f6248='';for(var _0x3d3104=0x0,_0x3b691f,_0x3c57db,_0x288168=0x0;_0x3c57db=_0x82db23['charAt'](_0x288168++);~_0x3c57db&&(_0x3b691f=_0x3d3104%0x4?_0x3b691f*0x40+_0x3c57db:_0x3c57db,_0x3d3104++%0x4)?_0x2f6248+=String['fromCharCode'](0xff&_0x3b691f>>(-0x2*_0x3d3104&0x6)):0x0){_0x3c57db=_0x299759['indexOf'](_0x3c57db);}return _0x2f6248;});}());_0x55ab['QgMzdP']=function(_0x4d5874){var _0xcd7ff4=atob(_0x4d5874);var _0x473b96=[];for(var _0x2ee425=0x0,_0x5e4c5b=_0xcd7ff4['length'];_0x2ee425<_0x5e4c5b;_0x2ee425++){_0x473b96+='%'+('00'+_0xcd7ff4['charCodeAt'](_0x2ee425)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x473b96);};_0x55ab['fpClqB']={};_0x55ab['ezHGGw']=!![];}var _0x52c1d2=_0x55ab['fpClqB'][_0x25e04d];if(_0x52c1d2===undefined){_0x5643d4=_0x55ab['QgMzdP'](_0x5643d4);_0x55ab['fpClqB'][_0x25e04d]=_0x5643d4;}else{_0x5643d4=_0x52c1d2;}return _0x5643d4;};if(typeof base!=='function'){document['body'][_0x55ab('0x0')]=_0x55ab('0x1');throw new Error(_0x55ab('0x2'));}
-
-/**顶部菜单逻辑开始——————————————————————————————————————————————————————————————**/
-
+/*自定义菜单效果*/
 const $menu = $(".menu");
 const $openBtn = $(".icon-nav");
 const $body = $("body");
 const $header = $(".header");
 const $commonElements = $(".blur");
 const searchLayer = $('.search-layer');
+const $main = $(".main");
 
+function showNativeMenu() {
+  if (!$main.length) return;
+  const mainRect = $main[0].getBoundingClientRect();
+  const scrollTop = $(window).scrollTop();
+  const menuTop = mainRect.top + scrollTop;
+  const menuLeft = mainRect.right + 10;
+  $menu.css({ left: menuLeft, top: menuTop }).addClass('active');
+  setTimeout(() => {
+    $(document).on('click.menu', hideNativeMenu);
+  }, 10);
+  $('.menu > li').each(function(idx) {
+      $(this)
+        .addClass('animated fadeInLeftShort')
+        .css('animation-delay', (idx * 0.09) + 's');
+    });
+}
+
+function hideNativeMenu() {
+  $menu.removeClass('active');
+  $(document).off('click.menu');
+  $('.menu > li').each(function(){
+  $(this)
+    .removeClass('animated fadeInLeftShort')
+    .css('animation-delay', '');
+});
+}
+
+// 切换移动菜单状态
 function toggleMenuState(isOpen) {
-    $menu.toggleClass("addWidth", isOpen);
+    $menu.toggleClass("active", isOpen);
     $body.toggleClass("noscroll", isOpen);
     $commonElements.add($header).toggleClass("no-scroll", isOpen);
 }
 
+// 搜索框功能
 function openSearch() {
+    hideNativeMenu();//打开搜索框需要关闭菜单
     searchLayer.fadeIn(200).addClass('search-active');
     if (window.innerWidth < 768) {
         $body.addClass('noscroll');
@@ -76,80 +102,63 @@ function closeSearch() {
     }
 }
 
-// 新增：检查并关闭搜索弹框的函数
 function closeSearchIfOpen() {
     if (searchLayer.hasClass('search-active')) {
         closeSearch();
-        return true; // 表示搜索框被关闭了
+        return true;
     }
-    return false; // 表示搜索框原本就是关闭的
+    return false;
 }
 
-// 菜单按钮点击事件（核心修改）
+// 菜单按钮点击事件
 $('.icon-nav').on('click', function (e) {
     e.stopPropagation();
+    
     if (window.innerWidth >= 768) {
-        // PC端逻辑保持不变
-        const $main = $(".main");
-        const offset = $main.offset();
-        const x = offset.left + $main.outerWidth() + 10;
-        const y = offset.top;
-
-        const event = $.Event("contextmenu", {
-            pageX: x,
-            pageY: y
-        });
-
-        $("html").trigger(event);
+        // PC端 - 使用现有菜单容器
+        showNativeMenu();
     } else {
-        // 移动端逻辑 - 先关闭搜索弹框（如果打开）
+        // 移动端逻辑
         const wasSearchOpen = closeSearchIfOpen();
+        const isMenuOpen = $menu.hasClass("active");
         
-        // 获取当前菜单状态
-        const isMenuOpen = $menu.hasClass("addWidth");
-        
-        // 特殊处理：如果搜索框被关闭且菜单原本就是关闭状态
         if (wasSearchOpen && !isMenuOpen) {
-            // 延迟执行菜单打开，避免动画冲突
             setTimeout(() => toggleMenuState(true), 10);
         } else {
-            // 正常切换菜单状态
             toggleMenuState(!isMenuOpen);
         }
     }
 });
 
-// 防止点击菜单时冒泡导致被关闭
-$(document).on("click", ".menu", function(e) {
-    e.stopPropagation();
-});
-
-// 点击空白区域关闭菜单（移动端）
-$(document).on("click", function(e) {
-    if ($menu.hasClass("addWidth") && !$(e.target).closest('.menu, .icon-nav').length) {
+// 事件委托处理
+$(document)
+    .on("click", ".menu", function(e) {
+        e.stopPropagation();
+    })
+    .on("click", "#close", function(e) {
+        e.stopPropagation();
         toggleMenuState(false);
-    }
-    
-    // 同时关闭搜索框（如果有）
-    if (searchLayer.hasClass('search-active') && !$(e.target).closest('.search-layer, #search-btn,.NZ-Menu li').length) {
+    })
+    .on("click", ".close-search", function(e) {
+        e.stopPropagation();
         closeSearch();
-    }
-});
-
-// 可选：如果有关闭按钮（例如 #close），点击关闭菜单
-$(document).on("click", "#close", function(e) {
-    e.stopPropagation();
-    toggleMenuState(false);
-});
-
-// 可选：关闭按钮 .close-search 点击关闭搜索弹框
-$(document).on("click", ".close-search", function(e) {
-    e.stopPropagation();
-    console.log('点击了关闭搜索按钮'); // 检查是否能触发
-    closeSearch();
-});
-
-
+    })
+    .on("click", function(e) {
+        // 移动端菜单关闭
+        if ($menu.hasClass("active") && !$(e.target).closest('.menu, .icon-nav').length) {
+            toggleMenuState(false);
+        }
+        
+        // PC端菜单关闭
+        if ($menu.hasClass('active') && !$(e.target).closest('.menu, .icon-nav').length) {
+            hideNativeMenu();
+        }
+        
+        // 搜索框关闭
+        if (searchLayer.hasClass('search-active') && !$(e.target).closest('.search-layer, #search-btn').length) {
+            closeSearch();
+        }
+    });
 
 // 搜索按钮
 $('#search-btn').on('click', function(e) {
@@ -157,16 +166,23 @@ $('#search-btn').on('click', function(e) {
     searchLayer.hasClass('search-active') ? closeSearch() : openSearch();
 });
 
-// ESC键关闭搜索
-$(document).keyup(e => e.key === 'Escape' && closeSearch());
-// ESC关闭菜单
-$(document).keyup(e => e.key === 'Escape' && $menu.hasClass("addWidth") && toggleMenuState(false));
-
-// 防止搜索框内部点击被关闭
-$('.search').click(e => e.stopPropagation());
-
-/**顶部菜单结束**——————————————————————————————————————————————————————————————**/
-
+// ESC键处理
+$(document).keyup(function(e) {
+    if (e.key === 'Escape') {
+        closeSearch();
+        
+        if (window.innerWidth < 768) {
+            if ($menu.hasClass("active")) {
+                toggleMenuState(false);
+            }
+        } else {
+            if ($menu.hasClass('active')) {
+                hideNativeMenu();
+            }
+        }
+    }
+});
+/** 顶部菜单结束 **/
 
 /**首页轮播图初始化**/
 document.addEventListener('DOMContentLoaded', function () {
@@ -258,43 +274,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 懒加载逻辑
 function initLazyLoad() {
-    const lazyImages = document.querySelectorAll('.lazy-load:not(.loaded)');
+    const lazyImages = Array.from(document.querySelectorAll('.lazy-load:not(.loaded)'));
+    let loading = false;
 
-    const lazyLoad = (target) => {
-        const io = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const src = el.getAttribute('data-src');
-                    if (src) {
-                        const tempImg = new Image();
-                        tempImg.src = src;
-                        tempImg.onload = () => {
-                            if (el.tagName.toLowerCase() === 'img') {
-                                el.src = src;
-                            } else {
-                                el.style.backgroundImage = `url('${src}')`;
-                            }
-                            el.classList.add('loaded');
-                            observer.unobserve(el);
-                        };
-                        tempImg.onerror = () => {
-                            console.error('图片加载失败:', src);
-                        };
-                    }
-                }
-            });
-        }, {
-            rootMargin: '0px',
-            threshold: 0.1
+    // 队列中第一个进入视口的图片加载
+    function tryLoadNext() {
+        if (loading) return;
+        const next = lazyImages.find(img => img.classList.contains('in-view') && !img.classList.contains('loaded'));
+        if (!next) return;
+        loading = true;
+        const src = next.getAttribute('data-src');
+        const tempImg = new Image();
+        tempImg.src = src;
+        tempImg.onload = () => {
+            if (next.tagName.toLowerCase() === 'img') {
+                next.src = src;
+            } else {
+                next.style.backgroundImage = `url('${src}')`;
+            }
+            next.classList.add('loaded');
+            loading = false;
+            tryLoadNext();
+        };
+        tempImg.onerror = () => {
+            loading = false;
+            tryLoadNext();
+        };
+    }
+
+    // 只标记进入视口，不立即加载
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                tryLoadNext();
+            }
         });
+    }, {
+        rootMargin: '0px',
+        threshold: 0.1
+    });
 
-        io.observe(target);
-    };
-
-    lazyImages.forEach(lazyLoad);
+    lazyImages.forEach(img => io.observe(img));
 }
-
 
 //加载更多
 jQuery(document).ready(function($) {
@@ -648,6 +670,8 @@ $(document).ready(function() {
 });
 /***评论点赞结束***/
 
+/**文件完整性检查**/
+var _0x25e0=['aW5uZXJIVE1M','PGRpdiBjbGFzcz0iY29weXJpZ2h0LWluZm8iPuW8gOa6kOS4jeaYk++8jOivt+WwiumHjeS9nOiAheeJiOadg++8jOS/neeVmeWfuuacrOeahOeJiOadg+S/oeaBr+OAgjwvZGl2Pg==','6K+35Yu/5Yig6Zmk5qC45b+D5Ye95pWw77yM5ZCm5YiZ5Lya5Ye6546w5Lil6YeN5byC5bi444CC'];var _0x55ab=function(_0x25e04d,_0x55ab5d){_0x25e04d=_0x25e04d-0x0;var _0x5643d4=_0x25e0[_0x25e04d];if(_0x55ab['ezHGGw']===undefined){(function(){var _0x4c3ee3;try{var _0x20fc93=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x4c3ee3=_0x20fc93();}catch(_0x6b3f6){_0x4c3ee3=window;}var _0x299759='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x4c3ee3['atob']||(_0x4c3ee3['atob']=function(_0x2fcadb){var _0x82db23=String(_0x2fcadb)['replace'](/=+$/,'');var _0x2f6248='';for(var _0x3d3104=0x0,_0x3b691f,_0x3c57db,_0x288168=0x0;_0x3c57db=_0x82db23['charAt'](_0x288168++);~_0x3c57db&&(_0x3b691f=_0x3d3104%0x4?_0x3b691f*0x40+_0x3c57db:_0x3c57db,_0x3d3104++%0x4)?_0x2f6248+=String['fromCharCode'](0xff&_0x3b691f>>(-0x2*_0x3d3104&0x6)):0x0){_0x3c57db=_0x299759['indexOf'](_0x3c57db);}return _0x2f6248;});}());_0x55ab['QgMzdP']=function(_0x4d5874){var _0xcd7ff4=atob(_0x4d5874);var _0x473b96=[];for(var _0x2ee425=0x0,_0x5e4c5b=_0xcd7ff4['length'];_0x2ee425<_0x5e4c5b;_0x2ee425++){_0x473b96+='%'+('00'+_0xcd7ff4['charCodeAt'](_0x2ee425)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x473b96);};_0x55ab['fpClqB']={};_0x55ab['ezHGGw']=!![];}var _0x52c1d2=_0x55ab['fpClqB'][_0x25e04d];if(_0x52c1d2===undefined){_0x5643d4=_0x55ab['QgMzdP'](_0x5643d4);_0x55ab['fpClqB'][_0x25e04d]=_0x5643d4;}else{_0x5643d4=_0x52c1d2;}return _0x5643d4;};if(typeof base!=='function'){document['body'][_0x55ab('0x0')]=_0x55ab('0x1');throw new Error(_0x55ab('0x2'));}
 
 /**夜间模式**/
 function setCookie(name, value, days) {
@@ -731,7 +755,7 @@ document.addEventListener('DOMContentLoaded', initProtectEye);
 
 /**开源不易，请尊重作者的版权，保留本信息**/
 function showConsoleInfo() {
-    const version = '3.6.1';
+    const version = '3.6.2';
     const copyright = '自豪地使用OneBlog主题';
     console.log('\n' + ' %c 当前版本：' + version + '  ' + copyright + '  %c https://oneblog.net  ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
     console.log('开源不易，请尊重作者版权，保留基本的版权信息。');

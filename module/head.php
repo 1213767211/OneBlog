@@ -1,12 +1,13 @@
 <!-- 移动端侧栏菜单-->
-<div class="menu m">
-    <div class="close">
+<div class="menu">
+    <div class="close m">
         <span id="close"><i class="iconfont icon-cancel"></i></span>
     </div>
     <?php if ($menu = CustomMenu()): ?>
         <?php echo $menu['hasIcon']; ?>
+        <li class="pc"><a href="javascript:void(0);" onclick="openSearch();"><i class="iconfont icon-search"></i>搜索</a></li>
     <?php endif; ?>
-    <div class="copyright">
+    <div class="copyright m">
         <div class="switch">
             夜间模式<input type="checkbox" id="night1" class="switchBtn"><label for="night1" class="switchBtn"></label>
         </div>

@@ -30,10 +30,12 @@ foreach ($domains as $domain): ?>
 </title>
 <link href="<?php $this->options->themeUrl('/static/sdk/animate.compat.css'); ?>" rel="stylesheet"><!--动画效果-->
 <link href="//at.alicdn.com/t/c/font_3940454_drimor4umam.css" rel="stylesheet"/><!---图标库 iconfont.cn -->
+<?php if ($this->is('index')):?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('/static/sdk/swiper/swiper-bundle.min.css'); ?>" /><!--轮播图-->
+<?php endif;?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('/static/sdk/fancybox3/jquery.fancybox.min.css'); ?>" /><!--灯箱效果-->
-<link href="<?php $this->options->themeUrl('/static/css/main.css?v=3.6.1'); ?>" rel="stylesheet"/><!--主题核心样式-->
-<link href="<?php $this->options->themeUrl('/static/css/m.css?v=3.6.1'); ?>" rel="stylesheet"/><!--主题核心样式-->
+<link href="<?php $this->options->themeUrl('/static/css/main.css?v=3.6.2'); ?>" rel="stylesheet"/><!--主题核心样式-->
+<link href="<?php $this->options->themeUrl('/static/css/m.css?v=3.6.2'); ?>" rel="stylesheet"/><!--主题核心样式-->
 <style>
 :root {
     --theme-color: <?php $color = $this->options->themeColor;echo $color ? $color : '#ff5050';?>;
