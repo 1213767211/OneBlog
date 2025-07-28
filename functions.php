@@ -339,34 +339,57 @@ function parseEmojis($content) {
 }
 
 //无插件阅读数，cookie保证阅读量真实性
-function get_post_view($archive){
+function get_post_view($archive) {
     $cid = $archive->cid;
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
-    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
-        echo 0;
-        return;
+    
+    // 确保views字段存在
+    try {
+        $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $cid));
+    } catch (Typecho_Db_Exception $e) {
+        try {
+            $db->query('ALTER TABLE ' . $prefix . 'contents ADD views INT DEFAULT 0;');
+        } catch (Typecho_Db_Exception $e) {
+            // 忽略重复字段错误
+        }
     }
+
+    // 双重验证字段
+    $fieldCheck = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $cid));
+    if (!array_key_exists('views', $fieldCheck)) {
+        try {
+            $db->query('ALTER TABLE ' . $prefix . 'contents ADD views INT DEFAULT 0;');
+        } catch (Typecho_Db_Exception $e) {
+            echo 0;
+            return;
+        }
+    }
+
+    // 获取当前阅读数
     $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
+    $currentViews = (int) $row['views'];
+    $shouldCount = false;
+    $views = [];
+    
     if ($archive->is('single')) {
-        $views = Typecho_Cookie::get('extend_contents_views');
-        if(empty($views)){
-            $views = array();
-        }else{
-            $views = explode(',', $views);
-        }
-        if(!in_array($cid,$views)){
-            $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
-        array_push($views, $cid);
-            $views = implode(',', $views);
-            Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
+        $cookieData = Typecho_Cookie::get('extend_contents_views');
+        $views = $cookieData ? explode(',', $cookieData) : [];
+        
+        if (!in_array($cid, $views)) {
+            $shouldCount = true;
+            $db->query($db->update('table.contents')
+                ->rows(['views' => $currentViews + 1])
+                ->where('cid = ?', $cid));
+            
+            $views[] = $cid;
+            Typecho_Cookie::set('extend_contents_views', implode(',', $views));
         }
     }
-    $newViews = $row['views'];
-    $newViews = formatNum($newViews);
-    echo $newViews;
+    $displayViews = $currentViews + ($shouldCount ? 1 : 0);
+    echo formatNum($displayViews);
 }
+
 
 //格式化阅读数：≥1000 单位转化为k；≥10000 单位转化为W；最多显示10W+
 function formatNum($num) {
