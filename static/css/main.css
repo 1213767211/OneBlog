@@ -1905,6 +1905,30 @@ textarea {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/**夜间模式图片遮罩**/
+html.night img {
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+html.night img:hover {
+    filter: brightness(1);
+}
+
+/**夜间模式背景图遮罩**/
+html.night .post_bg,
+html.night .banner-thumb,
+html.night .page_thumb {
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+html.night .post_bg:hover,
+html.night .banner-thumb:hover,
+html.night .page_thumb:hover {
+    filter: brightness(1);
+}
+
 /**代码格式化**/
 pre {
     overflow-x: auto;
