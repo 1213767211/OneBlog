@@ -172,6 +172,7 @@ p {
     line-height: 2em;
     text-align: justify;
     margin-bottom: 2em;
+    word-break: break-all;
 }
 
 /**引用样式**/
