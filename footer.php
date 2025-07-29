@@ -3,7 +3,9 @@
         <?php if ($menu = CustomMenu()): ?>
         <?php echo $menu['noIcon']; ?>
         <?php endif; ?>
+        <!--如果需要仅在网站底部额外增加页面路径，则按照以下格式增加即可：
         <a href="/archives">归档</a>
+        -->
     </div>
     <div class="copyright">
         Copyright&copy;<?php if (!empty($this->options->Webtime)): echo $this->options->Webtime().'-'; ?><?php endif; ?><?php echo date('Y'); ?>&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;Load：<?php echo timer_stop();?><br>

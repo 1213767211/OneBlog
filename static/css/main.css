@@ -33,13 +33,30 @@ html.night {
     --bg-button:color-mix(in srgb, var(--theme-color) 60%, black);/**调制主题背景色**/
 }
 
-/**添加模式切换过渡动画**/
-html {
-    transition: background-color 0.5s ease, color 0.5s ease;
+/**夜间模式图片遮罩**/
+html.night img {
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
 }
 
-* {
-    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+html.night img:hover {
+    filter: brightness(1);
+}
+
+/**夜间模式背景图遮罩**/
+html.night .post_bg,
+html.night .post_img,
+html.night .banner-thumb,
+html.night .page_thumb {
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+html.night .post_bg:hover,
+html.night .post_img:hover,
+html.night .banner-thumb:hover,
+html.night .page_thumb:hover {
+    filter: brightness(1);
 }
 
 /**主容器边框处理**/
@@ -47,9 +64,15 @@ html {
     box-shadow: none;
 }
 
+/**添加模式切换过渡动画**/
+html {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
     -webkit-tap-highlight-color: transparent; /* 禁用iOS点击时的灰色背景 */
 }
 
@@ -1912,30 +1935,6 @@ textarea {
     border-radius: 4px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-/**夜间模式图片遮罩**/
-html.night img {
-    filter: brightness(0.8);
-    transition: filter 0.3s ease;
-}
-
-html.night img:hover {
-    filter: brightness(1);
-}
-
-/**夜间模式背景图遮罩**/
-html.night .post_bg,
-html.night .banner-thumb,
-html.night .page_thumb {
-    filter: brightness(0.8);
-    transition: filter 0.3s ease;
-}
-
-html.night .post_bg:hover,
-html.night .banner-thumb:hover,
-html.night .page_thumb:hover {
-    filter: brightness(1);
 }
 
 /**代码格式化**/
