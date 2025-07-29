@@ -1509,6 +1509,7 @@ li .respond {
     -webkit-animation-fill-mode: initial;
     animation-fill-mode: initial;
     border-bottom: 1px solid var(--bg-input);
+    transition:none;
 }
 
 .comment-list li:last-child {
