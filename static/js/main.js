@@ -274,13 +274,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 懒加载逻辑
 function initLazyLoad() {
-    const lazyImages = Array.from(document.querySelectorAll('.lazy-load:not(.loaded)'));
+    const lazyImages = Array.from(document.querySelectorAll('.lazy-load:not(.loaded):not(.failed)'));
     let loading = false;
 
     // 队列中第一个进入视口的图片加载
     function tryLoadNext() {
         if (loading) return;
-        const next = lazyImages.find(img => img.classList.contains('in-view') && !img.classList.contains('loaded'));
+        const next = lazyImages.find(img => img.classList.contains('in-view') && !img.classList.contains('loaded') && !img.classList.contains('failed'));
         if (!next) return;
         loading = true;
         const src = next.getAttribute('data-src');
@@ -297,6 +297,12 @@ function initLazyLoad() {
             tryLoadNext();
         };
         tempImg.onerror = () => {
+            if (next.tagName.toLowerCase() === 'img') {
+                next.src = '/usr/themes/OneBlog/static/img/error.jpg'; 
+            } else {
+                next.style.backgroundImage = `url('/usr/themes/OneBlog/static/img/error.jpg')`;
+            }
+            next.classList.add('failed');
             loading = false;
             tryLoadNext();
         };
