@@ -34,12 +34,12 @@ html.night {
 }
 
 /**夜间模式图片遮罩**/
-html.night img {
+html.night img:not(.fancybox-image):not(.fancybox-spaceball) {
     filter: brightness(0.8);
     transition: filter 0.3s ease;
 }
 
-html.night img:hover {
+html.night img:hover:not(.fancybox-image):not(.fancybox-spaceball) {
     filter: brightness(1);
 }
 
