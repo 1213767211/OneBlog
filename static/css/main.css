@@ -1308,6 +1308,7 @@ h3.oneblog span{
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: row;
+	margin-top: 10px;
 }
 
 .emoji,.submit{
@@ -1322,7 +1323,6 @@ h3.oneblog span{
 
 .submit {
     padding: 5px 20px;
-    margin-top: 10px;
     border-radius: 3px;
     transition: 0.4s ease;
     opacity: 0.8;
