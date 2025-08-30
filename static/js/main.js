@@ -1,5 +1,5 @@
 /**
- * Updated: 2025-07-26
+ * Updated: 2025-08-30
  * Author: ©彼岸临窗 oneblog.net
  *
  * 注释含命名规范，开源不易，如需引用请注明来源:彼岸临窗 https://oneblog.net。
@@ -185,23 +185,34 @@ $(document).keyup(function(e) {
 /** 顶部菜单结束 **/
 
 /**首页轮播图初始化**/
-document.addEventListener('DOMContentLoaded', function () {
+function renderBanner(options = {}) {
+  const {
+    bannerSwitch = 'on',
+    jsonId = 'banner-json',
+    containerSelector = '.banner-container'
+  } = options;
+
   const isMobile = window.innerWidth < 768;
   const isHome = location.pathname === '/' || location.pathname === '/index';
 
   if (bannerSwitch !== 'on' || !isHome) return;
 
-  const jsonData = document.getElementById('banner-json').textContent;
+  const jsonEl = document.getElementById(jsonId);
+  if (!jsonEl) return;
+
   let posts = [];
   try {
-    posts = JSON.parse(jsonData);
+    posts = JSON.parse(jsonEl.textContent);
   } catch (e) {
     console.error('无效的 banner JSON', e);
     return;
   }
+  if (!posts.length) return;
 
-  const container = document.querySelector('.banner-container');
+  const container = document.querySelector(containerSelector);
   if (!container) return;
+
+  container.innerHTML = ''; // 清空容器
 
   if (isMobile) {
     // 生成移动端 swiper
@@ -253,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const item2 = document.createElement('div');
     item2.className = 'banner-item';
     for (let i = 1; i <= 2; i++) {
+      if (!posts[i]) continue;
       item2.innerHTML += `
         <a href="${posts[i].link}" title="${posts[i].title}">
           <div class="banner-thumb lazy-load" data-src="${posts[i].thumb}">
@@ -261,16 +273,16 @@ document.addEventListener('DOMContentLoaded', function () {
         </a>
       `;
     }
-
     banner.appendChild(item1);
     banner.appendChild(item2);
     container.appendChild(banner);
-    //调用懒加载函数
-    initLazyLoad();
+
+    // 调用懒加载函数，如有需要
+    if (typeof initLazyLoad === 'function') {
+      initLazyLoad();
+    }
   }
-});
-
-
+}
 
 // 懒加载逻辑
 function initLazyLoad() {
@@ -436,9 +448,14 @@ function applyExcerptTruncate(context = document) {
     });
 }
 
+
 // 首次加载时执行
 document.addEventListener('DOMContentLoaded', function () {
+    renderBanner({
+      bannerSwitch: typeof bannerSwitch !== 'undefined' ? bannerSwitch : 'on'
+    });
     applyExcerptTruncate();
+    finishLoading(1000);
 });
 
 
@@ -761,7 +778,7 @@ document.addEventListener('DOMContentLoaded', initProtectEye);
 
 /**开源不易，请尊重作者的版权，保留本信息**/
 function showConsoleInfo() {
-    const version = '3.6.2';
+    const version = '3.6.3';
     const copyright = '自豪地使用OneBlog主题';
     console.log('\n' + ' %c 当前版本：' + version + '  ' + copyright + '  %c https://oneblog.net  ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
     console.log('开源不易，请尊重作者版权，保留基本的版权信息。');
@@ -825,3 +842,24 @@ document.addEventListener('DOMContentLoaded', function() {
         codeBlock.style.filter = 'none';
     });
 });
+
+/**加载动画**/
+var loadingStartTime = Date.now();
+
+function finishLoading(minDuration) {
+    var loadingEl = document.getElementById('global-loading');
+    var mainEl = document.getElementById('main');
+    if (!loadingEl || !mainEl) return;
+    var elapsed = Date.now() - loadingStartTime;
+    var wait = Math.max(0, (minDuration || 800) - elapsed);
+    setTimeout(function() {
+        loadingEl.style.opacity = 0;
+        setTimeout(function() {
+            loadingEl.style.display = 'none';
+            mainEl.style.display = '';
+            var d = new Date();
+            d.setFullYear(d.getFullYear() + 1);
+            document.cookie = 'jsLoaded=1; path=/; expires=' + d.toUTCString();
+        }, 300);
+    }, wait);
+}

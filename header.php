@@ -34,8 +34,8 @@ foreach ($domains as $domain): ?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('/static/sdk/swiper/swiper-bundle.min.css'); ?>" /><!--轮播图-->
 <?php endif;?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('/static/sdk/fancybox3/jquery.fancybox.min.css'); ?>" /><!--灯箱效果-->
-<link href="<?php $this->options->themeUrl('/static/css/main.css?v=3.6.2'); ?>" rel="stylesheet"/><!--主题核心样式-->
-<link href="<?php $this->options->themeUrl('/static/css/m.css?v=3.6.2'); ?>" rel="stylesheet"/><!--主题核心样式-->
+<link href="<?php $this->options->themeUrl('/static/css/main.css?v=3.6.3'); ?>" rel="stylesheet"/><!--主题核心样式-->
+<link href="<?php $this->options->themeUrl('/static/css/m.css?v=3.6.3'); ?>" rel="stylesheet"/><!--主题核心样式-->
 <style>
 :root {
     --theme-color: <?php $color = $this->options->themeColor;echo $color ? $color : '#ff5050';?>;
@@ -83,3 +83,10 @@ var bannerSwitch = "<?php echo $this->options->switch; ?>";
 <?php $this->header();?>
 </head>
 <body>
+<?php $hasLoaded = !empty($_COOKIE['jsLoaded']); ?>
+<div id="global-loading" style="display:<?php echo $hasLoaded ? 'none' : 'flex'; ?>;">
+    <div class="progress-loader">
+        <div class="progress"></div>
+    </div>
+</div>
+<div id="main" style="display:<?php echo $hasLoaded ? '' : 'none'; ?>;">

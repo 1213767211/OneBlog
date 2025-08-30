@@ -7,12 +7,11 @@
  * 
  * @package OneBlog
  * @author 彼岸临窗
- * @version 3.6.2
+ * @version 3.6.3
  * @link https://oneblog.net
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php'); ?>
-
 <div class="main">
 <?php $this->need('module/head.php');
 if ($this->is('index')){//首页显示banner

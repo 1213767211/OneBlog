@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <?php endif;?>
 
-<script src="<?php $this->options->themeUrl('/static/js/main.js?v=3.6.2'); ?>"></script><!--主题js-->
+<script src="<?php $this->options->themeUrl('/static/js/main.js?v=3.6.3'); ?>"></script><!--主题js-->
 
 <!-- 版权信息 -->
 <div id="copyright-info" style="display: none;">
@@ -100,5 +100,6 @@ $(document).on('click', '#tomail', function() {layer.msg('联系邮箱：<?php $
 <?php if (!empty($this->options->JS)): ?>
 <?php $this->options->JS();?>
 <?php endif; ?>
+</div>
 </body>
 </html>
