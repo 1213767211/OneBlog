@@ -282,18 +282,36 @@ function getNZMenuData() {
 //首页置顶banner文章 极致优化 只查询1次
 function get_banner_data($options) {
     if ($options->switch != 'on') return [];
-    // 高效处理CID：过滤非数字、取前3个、防注入
+    
     $cids = array_filter(
-        array_slice(explode(',', $options->Banner ?? ''), 0, 3),
+        array_slice(
+            preg_split('/[,\s]+/', $options->Banner ?? '', -1, PREG_SPLIT_NO_EMPTY),
+            0, 3
+        ),
         function($v) { return ctype_digit((string)$v) && $v > 0; }
     );
-    if (empty($cids)) return [];
+    if (!$cids) return [];
+
     $db = Typecho_Db::get();
-    return $db->fetchAll($db->select()
+    $cid_str = implode(',', $cids);
+    $is_mysql = stripos($db->getAdapterName(), 'mysql') !== false;
+
+    $query = $db->select()
         ->from('table.contents')
-        ->where('cid IN ?', $cids)
-        ->where('type = ?', 'post')
-        ->order('FIELD(cid, '.implode(',', $cids).')'));
+        ->where("cid IN ($cid_str)")
+        ->where('type = ?', 'post');
+
+    if ($is_mysql) {
+        $query->order("FIELD(cid, $cid_str)");
+    }
+    $results = $db->fetchAll($query);
+
+    if (!$is_mysql && count($results) > 1) {
+        usort($results, function($a, $b) use ($cids) {
+            return array_search($a['cid'], $cids) - array_search($b['cid'], $cids);
+        });
+    }
+    return $results;
 }
 
 // 查询文章数最多的前10个标签
