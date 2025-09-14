@@ -445,6 +445,8 @@ td,th {
     height: 100%;
     background: var(--white);
     padding: 30px 80px 30px 60px;
+    box-shadow: 0px 2px 6px 0px #00000029;
+    z-index: 999999;
 }
 
 button.close-search {
